@@ -40,7 +40,46 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+
+        public void AddNumbers()
+        {
+            int oneNumber = 22;
+            int nextNumber = 2;
+
+            CustomList customList = new CustomList();
+            int total = customList.Add(oneNumber, nextNumber);
+
+            Assert.AreEqual(24, total);
+        }
+
+        [TestMethod]
+
+        public void AddSuits()
+        {
+            string modelOfSuit = "MK 1";
+            string classOfSuit = "Armor";
+
+            CustomList customList = new CustomList();
+            string writeout = customList.Add(modelOfSuit, classOfSuit);
+
+            Assert.AreEqual("MK 1 Armor", writeout);
+        }
         
+
+        [TestMethod]
+
+        public void AddValue()
+        {
+            int originalValue = 100;
+            int decreasingValue = -25;
+
+            CustomList customList = new Sandbox.CustomList();
+            int currentValue = customList.Add(originalValue, decreasingValue);
+
+            Assert.AreEqual(75, currentValue);
+        }
         // what happens if you add multiple things (or add to a CustomList that already has some values)?
             // what happens to the last-added item?
             // what happens to the Count?
