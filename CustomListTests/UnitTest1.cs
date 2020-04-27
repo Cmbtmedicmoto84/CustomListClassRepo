@@ -42,43 +42,60 @@ namespace CustomListTests
         }
 
         [TestMethod]
-
         public void AddNumbers()
         {
-            int oneNumber = 22;
+            CustomList<int> suitsListQuantity = new CustomList<int>();
+            int oneNumber = 1;
             int nextNumber = 2;
+            int onHand;
 
-            CustomList customList = new CustomList();
-            int total = customList.Add(oneNumber, nextNumber);
+            suitsListQuantity.Add(1);
+            suitsListQuantity.Add(2);
 
-            Assert.AreEqual(24, total);
+            onHand = suitsListQuantity.Count;
+
+            Assert.AreEqual(2, onHand);
         }
 
         [TestMethod]
-
-        public void AddSuits()
+        public void AddStrings_SecondThingAdded_IsAtFirstIndex()
         {
+            CustomList<string> suitListNames = new CustomList<string>();
             string modelOfSuit = "MK 1";
             string classOfSuit = "Armor";
+            string expected = "Armor";
 
-            CustomList customList = new CustomList();
-            string writeout = customList.Add(modelOfSuit, classOfSuit);
-
-            Assert.AreEqual("MK 1 Armor", writeout);
+            //act
+            suitListNames.Add(modelOfSuit);
+            suitListNames.Add(classOfSuit);
+            string actual = suitListNames[1];
+            
+            //assert
+            Assert.AreEqual(expected, actual);
         }
         
 
         [TestMethod]
-
-        public void AddValue()
+        public void AddValues_PastCapacity_CapacityWillDouble()
         {
+            //arrange
+            CustomList<int> suitListValues = new CustomList<int>();
             int originalValue = 100;
             int decreasingValue = -25;
+            int expected = 8;
 
-            CustomList customList = new Sandbox.CustomList();
-            int currentValue = customList.Add(originalValue, decreasingValue);
+            //act
+            suitListValues.Add(originalValue);
+            suitListValues.Add(decreasingValue);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(decreasingValue);
+            suitListValues.Add(originalValue);
 
-            Assert.AreEqual(75, currentValue);
+            int actual = suitListValues.Capacity;
+           
+            //(100, -25, 100, -25, 100)
+            //assert
+            Assert.AreEqual(expected, actual);
         }
         // what happens if you add multiple things (or add to a CustomList that already has some values)?
             // what happens to the last-added item?
