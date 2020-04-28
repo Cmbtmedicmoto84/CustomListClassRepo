@@ -10,13 +10,13 @@ namespace Sandbox
     public class CustomList<T>
     {
         // member variables (HAS A) Declare array to store the elements
-        private int[] pieces;
+        private T[] pieces;
         private int count;
 
         private int capacity;
 
         //// constructor (SPAWNER)
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
@@ -41,6 +41,10 @@ namespace Sandbox
             {
                 return count;
             }
+            private set
+            {
+                count = value;
+            }
         }
         public int Capacity
         {
@@ -54,13 +58,26 @@ namespace Sandbox
         {
             count = 0;
             capacity = 4;
-            pieces = new int[capacity];
+            pieces = new T[capacity];
         }
         // member methods (CAN DO)
-        public void Add(int item)
+        public void Add(T item)
         {
             pieces[count] = item;
-            count++;
+            if (count == capacity)
+            {
+                pieces = (new T[capacity]);
+                count++;
+            }
+
+            
+            
+        }
+
+        public void Remove(T item)
+        {
+            pieces[count] = item; //if statements??
+            count--;
         }
     }
 }
