@@ -88,7 +88,7 @@ namespace CustomListTests
             //Arrange
             CustomList<int> testList = new CustomList<int>();
             int itemToRemove = 6;
-            int expected = 3;
+            int expected = 8;
 
 
             //Act
@@ -138,7 +138,7 @@ namespace CustomListTests
             testList.Add(2);
             testList.Remove(200);
 
-            int actual = testList[]; //not sure on this?????
+            int actual = testList[1]; //not sure on this?????
 
             //Assert
             Assert.AreEqual(expected, actual);
