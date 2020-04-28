@@ -13,7 +13,7 @@ namespace Sandbox
         {
             var customListCollection = new CustomList<int>();
             customListCollection.Add(2);
-            Console.WriteLine(customListCollection[0]);
+            Console.WriteLine(customListCollection);
 
         }
     }
