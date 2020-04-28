@@ -11,9 +11,9 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            var customListCollection = new CustomList<int>();
-            customListCollection.Add(2);
-            Console.WriteLine(customListCollection);
+            //var customListCollection = new CustomList<int>();
+            //customListCollection.Add(2);
+            //Console.WriteLine(customListCollection);
 
         }
     }

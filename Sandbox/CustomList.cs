@@ -41,10 +41,6 @@ namespace Sandbox
             {
                 return count;
             }
-            private set
-            {
-                count = value;
-            }
         }
         public int Capacity
         {
@@ -63,13 +59,14 @@ namespace Sandbox
         // member methods (CAN DO)
         public void Add(T item)
         {
-            pieces[count] = item;
+
+            
             if (count == capacity)
             {
-                pieces = (new T[capacity]);
-                count++;
+                capacity = capacity * 2;
             }
-
+            pieces[count] = item;
+            count++;
             
             
         }

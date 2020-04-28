@@ -110,8 +110,8 @@ namespace CustomListTests
 
             //Arrange
             CustomList<int> testList = new CustomList<int>();
-            int itemToRemove = 1;
-            int otherItemToRemove = 2;
+            int valueOne = 1;
+            int valueTwo = 2;
             int expected = 2;
 
             
