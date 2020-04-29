@@ -58,21 +58,21 @@ namespace Sandbox
         }
         // member methods (CAN DO)
         public void Add(T item)
-        {
-
-            
+        { 
             if (count == capacity)
             {
                 capacity = capacity * 2;
             }
             pieces[count] = item;
-            count++;
-            
-            
+            count++;  //this method works when I comment this line out.  but every other test fails.
         }
 
         public void Remove(T item)
         {
+            if (count <= capacity)
+            {
+                
+            }
             pieces[count] = item; //if statements??
             count--;
         }
