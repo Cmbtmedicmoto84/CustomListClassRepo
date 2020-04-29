@@ -53,7 +53,7 @@ namespace CustomListTests
 
             actual = suitsListQuantity.Count;
 
-            Assert.AreEqual(1, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -125,18 +125,18 @@ namespace CustomListTests
         {
             //arrange
             CustomList<int> suitListValues = new CustomList<int>();
-            int originalValue = 4;
-            int decreasingValue = 4;
-            int expected = 4;
+            int originalValue = 100;
+            int someValue = 200;
+            int expected = 3;
 
             //act
             suitListValues.Add(originalValue);
-            suitListValues.Add(decreasingValue);
             suitListValues.Add(originalValue);
-            suitListValues.Add(decreasingValue);
             suitListValues.Add(originalValue);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(someValue);
 
-            int actual = suitListValues.Capacity;
+            int actual = suitListValues[4];
 
             //(100, -25, 100, -25, 100)
             //assert
