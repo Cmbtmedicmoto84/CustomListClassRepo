@@ -81,7 +81,7 @@ namespace CustomListTests
             CustomList<int> suitListValues = new CustomList<int>();
             int originalValue = 4;
             int doubleCapacity = 8;
-            int expected = 4;
+            int expected = 5;
             
 
             //act
@@ -89,9 +89,10 @@ namespace CustomListTests
             suitListValues.Add(doubleCapacity);
             suitListValues.Add(originalValue);
             suitListValues.Add(doubleCapacity);
-            suitListValues.Add(8);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(doubleCapacity);
 
-            int actual = suitListValues[4];
+            int actual = suitListValues.Count;
            
             //(100, -25, 100, -25, 100)
             //assert
@@ -127,7 +128,7 @@ namespace CustomListTests
             CustomList<int> suitListValues = new CustomList<int>();
             int originalValue = 100;
             int someValue = 200;
-            int expected = 3;
+            int expected = 5;
 
             //act
             suitListValues.Add(originalValue);
