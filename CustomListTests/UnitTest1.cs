@@ -10,7 +10,7 @@ namespace CustomListTests
         [TestMethod]
         public void Add_AddingOneValueToEmptyCustomList_AddedValueGoesToIndexZero()
         {
-            // arrange
+            // arrange // // 
             CustomList<int> testList = new CustomList<int>();
             int itemToAdd = 10;
             int expected = 10;
