@@ -23,7 +23,7 @@ namespace Sandbox
         {
             get
             {
-                if(index < count && index >= 0)
+                if(index < count && index >= 0) 
                 {
                     return items[index];
                 }
@@ -44,13 +44,15 @@ namespace Sandbox
             {
                 return count;
             }
+
         }
-        public int Capacity
+        public virtual int Capacity 
         {
             get
             {
                 return capacity;
             }
+
         }
 
         public CustomList()
@@ -76,12 +78,13 @@ namespace Sandbox
                 capacity = capacity * 2;
                 T[] tempArray = new T[capacity];
 
-                //for (int i = 0; i < count; i++)
-                //{
-                //    continue;
-                //}
+                for (int i = 0; i < count; i++)
+                {
+                    tempArray[i] = items[i];  //just added
+                }
+                items = tempArray;
             }
-            items[count] = item;
+            items[count] = item;  //changed to 'item'
             count++;
         }
         
@@ -92,9 +95,9 @@ namespace Sandbox
         //use a forloop to automate this for everything in pieces
 
 
-        public void Remove(T item)
+        public virtual void Remove(T item)
         {
-            if (count <= capacity)
+            if (count >= capacity && count != capacity)
             {
 
             }

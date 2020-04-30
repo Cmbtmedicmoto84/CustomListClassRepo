@@ -89,10 +89,10 @@ namespace CustomListTests
             suitListValues.Add(doubleCapacity);
             suitListValues.Add(originalValue);
             suitListValues.Add(doubleCapacity);
-            suitListValues.Add(originalValue);
+            suitListValues.Add(5);
             suitListValues.Add(doubleCapacity);
 
-            int actual = suitListValues.Count;
+            int actual = suitListValues[4]; //changed from .count to [4]
            
             //(100, -25, 100, -25, 100)
             //assert
@@ -128,19 +128,151 @@ namespace CustomListTests
             CustomList<int> suitListValues = new CustomList<int>();
             int originalValue = 100;
             int someValue = 200;
-            int expected = 5;
+            int expected = 200;
 
             //act
-            suitListValues.Add(originalValue);
-            suitListValues.Add(originalValue);
-            suitListValues.Add(originalValue);
-            suitListValues.Add(originalValue);
             suitListValues.Add(someValue);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(originalValue);
+            suitListValues.Add(originalValue);
 
-            int actual = suitListValues[4];
+            int actual = suitListValues[0];
 
             //(100, -25, 100, -25, 100)
             //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItem_CountGoesDown()
+        {
+
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 1;
+
+            //Act
+
+            testList.Add(1);
+            testList.Add(2);
+            testList.Remove(2);
+
+            int actual = testList.Count;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemoveItem_SecondaryCountGoesDown()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 3;
+
+
+            //Act
+            testList.Add(2);
+            testList.Add(4);
+            testList.Add(6);
+            testList.Add(8);
+            testList.Remove(6);
+
+            int actual = testList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RemoveItem_PostSecondary()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int valueOne = 1337;
+            int valueTwo = 1;
+            int valueThree = 22;
+            int expected = 8;
+
+
+            //Act
+            testList.Add(valueOne);
+            testList.Add(valueTwo);
+            testList.Add(valueThree);
+            testList.Add(valueOne);
+            testList.Add(valueTwo);
+            testList.Add(valueThree);
+            testList.Add(valueOne);
+            testList.Add(valueTwo);
+            testList.Add(valueThree);
+
+            testList.Remove(valueThree);
+
+            int actual = testList.Count;
+
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_SecondaryCount_ArrayShift()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int itemToRemove = 6;
+            int expected = 8;
+
+
+            //Act
+            testList.Add(2);
+            testList.Add(4);
+            testList.Add(6);
+            testList.Add(8);
+
+            testList.Remove(itemToRemove); //mark garbage collect?
+            int actual = testList[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_CountDoesNotChangeAfterRemove()
+        {
+
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int valueOne = 1;
+            int valueTwo = 2;
+            int expected = 2;
+
+
+            //Act
+            testList.Add(1);
+            testList.Add(2);
+            testList.Remove(200); //show the count does not go down?
+
+            int actual = testList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_ItemDoesNotShiftAfterRemove()
+        {
+            //Arrange
+            CustomList<int> testList = new CustomList<int>();
+            int expected = 2;
+
+            //Act
+            testList.Add(1);
+            testList.Add(2);
+            testList.Remove(200);
+
+            int actual = testList[1]; //not sure on this?????
+
+            //Assert
             Assert.AreEqual(expected, actual);
         }
         // what happens if you add multiple things (or add to a CustomList that already has some values)?
