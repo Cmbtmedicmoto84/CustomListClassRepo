@@ -97,7 +97,8 @@ namespace Sandbox
 
         public virtual void Remove(T item)
         {
-            if (count >= capacity && count != capacity)
+             
+            if (count >= capacity)
             {
 
             }

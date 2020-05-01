@@ -167,14 +167,19 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 3;
+            int valuePrimary = 2;
+            int valueSecondary = 4;
+            int valueThird = 6;
+            int valueFourth = 8;
+            int expected = 6;
 
 
             //Act
-            testList.Add(2);
-            testList.Add(4);
+            testList.Add(valuePrimary);
+            testList.Add(valueSecondary);
+            testList.Add(valueThird);
+            testList.Add(valueFourth);
             testList.Add(6);
-            testList.Add(8);
             testList.Remove(6);
 
             int actual = testList.Count;
@@ -203,9 +208,9 @@ namespace CustomListTests
             testList.Add(valueThree);
             testList.Add(valueOne);
             testList.Add(valueTwo);
-            testList.Add(valueThree);
+            testList.Add(8);
 
-            testList.Remove(valueThree);
+            testList.Remove(8);
 
             int actual = testList.Count;
 
@@ -224,10 +229,10 @@ namespace CustomListTests
 
 
             //Act
-            testList.Add(2);
-            testList.Add(4);
-            testList.Add(6);
+            testList.Add(itemToRemove);
+            testList.Add(itemToRemove);
             testList.Add(8);
+            testList.Add(itemToRemove);
 
             testList.Remove(itemToRemove); //mark garbage collect?
             int actual = testList[2];
@@ -248,8 +253,8 @@ namespace CustomListTests
 
 
             //Act
-            testList.Add(1);
-            testList.Add(2);
+            testList.Add(valueOne);
+            testList.Add(valueTwo);
             testList.Remove(200); //show the count does not go down?
 
             int actual = testList.Count;
@@ -263,12 +268,15 @@ namespace CustomListTests
         {
             //Arrange
             CustomList<int> testList = new CustomList<int>();
-            int expected = 2;
+            int valueFirst = 5;
+            int valueSecond = 7;
+            int expected = 7;
 
             //Act
-            testList.Add(1);
-            testList.Add(2);
-            testList.Remove(200);
+            testList.Add(valueFirst);
+            testList.Add(valueSecond);
+            testList.Remove(valueFirst);
+
 
             int actual = testList[1]; //not sure on this?????
 
